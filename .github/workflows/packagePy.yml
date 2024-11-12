@@ -1,10 +1,7 @@
 name: Build Windows Executable
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +25,7 @@ jobs:
         run: pyinstaller --onefile --windowed SelectWinner.py
 
       - name: Upload executable
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: SelectWinner
           path: ./dist/SelectWinner.exe
